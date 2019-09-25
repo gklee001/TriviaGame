@@ -2,7 +2,8 @@
 
 $(document).ready(function () {
     var countDown;
-    var time = 90
+    var time = 90;
+    var counter = 0;
     function start() {
         time--;
         $('#timer').text(time)
@@ -24,15 +25,26 @@ $(document).ready(function () {
 
     $("form").on("submit", function (event) {
         event.preventDefault();
-        //
+        //.serializeArray to take input and put into an array, then subtracted total to whatever datais.len th"
         var data = $("form").serializeArray();
         console.log(data);
         console.log(9 - data.length)
         $('.unanswered').text(9 - data.length);
+        for (var i = 0; i <= data.length - 1; i++) {
+            if (data[i]["value"] === "right") {
+                counter++
+            }
+        }
+        $('.correct').text(counter);
+        $('.wrong').text(data.length - counter)
+
+        //timer still works, need to stop it
+        clearInterval(countDown);
+        //now got to hide quesitons after answers have been submitted
+        $('.questions').hide();
     });
 
 }
-
 )
 
 
