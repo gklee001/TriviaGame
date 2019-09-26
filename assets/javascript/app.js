@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     var countDown;
-    var time = 5;
+    var time = 90;
     var counter = 0;
 
     function start() {
@@ -21,19 +21,11 @@ $(document).ready(function () {
         $('#start').hide();
         $('#timer').text(time);
         countDown = setInterval(start, 1000);
-
-        //fix bug by adding another condition
-        $("form").submit(function () {
-
-        }
     })
-
-
+    //.serializeArray to take input and put into an array, then subtracted total to whatever the data is .length" //we use 9 because there are 9 questions
 
     $("form").on("submit", function (event) {
         event.preventDefault();
-        //.serializeArray to take input and put into an array, then subtracted total to whatever the data is .length"
-        //  //we use 9 because there are 9 questions
         var data = $("form").serializeArray();
         console.log(data);
         console.log(9 - data.length)
@@ -46,7 +38,7 @@ $(document).ready(function () {
         $('.correct').text(counter);
         $('.wrong').text(data.length - counter)
 
-        //timer still works, need to stop it
+        //timer still works, need to stop it use clearinterval
         clearInterval(countDown);
         //now got to hide quesitons after answers have been submitted
         $('.questions').hide();
@@ -54,7 +46,8 @@ $(document).ready(function () {
 
 }
 )
-//ran into a bug, need to put a condition for when the time runs to 0
+
+//ran into a bug, need to put a condition for when the time runs to 0 it will auto submit points 
 
 
 
