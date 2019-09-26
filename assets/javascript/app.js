@@ -2,8 +2,9 @@
 
 $(document).ready(function () {
     var countDown;
-    var time = 90;
+    var time = 5;
     var counter = 0;
+
     function start() {
         time--;
         $('#timer').text(time)
@@ -13,19 +14,26 @@ $(document).ready(function () {
             console.log(countDown);
         }
     }
-
+    //create a function to count down, add text to timer div, hide button once it's clicked, consolelog to check js is inked//
     console.log("ready");
     $('#start').on("click", function () {
         $('.questions').toggle();
         $('#start').hide();
         $('#timer').text(time);
         countDown = setInterval(start, 1000);
+
+        //fix bug by adding another condition
+        $("form").submit(function () {
+
+        }
     })
+
 
 
     $("form").on("submit", function (event) {
         event.preventDefault();
-        //.serializeArray to take input and put into an array, then subtracted total to whatever datais.len th"
+        //.serializeArray to take input and put into an array, then subtracted total to whatever the data is .length"
+        //  //we use 9 because there are 9 questions
         var data = $("form").serializeArray();
         console.log(data);
         console.log(9 - data.length)
@@ -46,6 +54,8 @@ $(document).ready(function () {
 
 }
 )
+//ran into a bug, need to put a condition for when the time runs to 0
+
 
 
 
